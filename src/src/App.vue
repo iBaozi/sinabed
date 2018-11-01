@@ -6,7 +6,7 @@
 			<mu-button to="history" flat slot="right">历史</mu-button>
 			<mu-button to="setting" flat slot="right">设置</mu-button>
 			<mu-button to="api" flat slot="right">接口</mu-button>
-			<mu-button to="http://perpay.inu1255.cn/donate/1?page=1&n=1" flat slot="right">捐赠</mu-button>
+			<mu-button @click="donate" flat slot="right">捐赠</mu-button>
 		</mu-appbar>
 		<div class="main">
 			<mu-scale-transition>
@@ -20,6 +20,18 @@
 		</footer>
 	</div>
 </template>
+<script>
+import Vue from 'vue'
+import { Component, Prop, Watch } from 'vue-property-decorator';
+import { State, Action } from "vuex-class";
+
+@Component()
+export default class App extends Vue {
+	donate() {
+		window.open('http://perpay.inu1255.cn/donate/1?page=1&n=1')
+	}
+}
+</script>
 <style lang="less">
 @import "~@/styles/methods.less";
 

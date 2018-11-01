@@ -1,0 +1,27 @@
+{
+	"name": "图片列表",
+	"method": "get",
+	"params": {
+        "token": {
+			"lbl": "身份信息",
+			"len": [0, 37],
+			"need": true
+		},
+		"create_min": {
+			"lbl": "多久之后",
+			"type": "int"
+		},
+		"create_max": {
+			"lbl": "多久之前",
+			"type": "int"
+		},
+		"offset": {
+			"lbl": "偏移时间",
+			"type": "int",
+			"def": 0
+		}
+	},
+	"ret": {
+		"no": 200
+	}
+}

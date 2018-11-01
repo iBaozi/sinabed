@@ -1,0 +1,16 @@
+{
+    "name": "输入验证码",
+    "method": "get",
+    "params": {
+        "username": {
+            "lbl": "用户名"
+        },
+        "code": {
+            "lbl": "验证码",
+            "need": true
+        }
+    },
+    "ret": {
+        "no": 200
+    }
+}

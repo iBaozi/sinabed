@@ -1,0 +1,46 @@
+{
+  "name": "auto-server",
+  "version": "1.0.0",
+  "description": "auto server power by greenjs",
+  "main": "app.js",
+  "scripts": {
+    "table": "node lib/df.js table",
+    "merge": "node lib/df.js merge",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com//auto server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com//auto server/issues"
+  },
+  "homepage": "https://github.com//auto server#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "chokidar": "^1.7.0",
+    "co": "^4.6.0",
+    "connect-redis": "^3.3.0",
+    "express": "^4.15.5",
+    "express-noginx": "^1.5.0",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "hiredis": "^0.5.0",
+    "log4js": "^2.3.4",
+    "mysql": "^2.14.1",
+    "node-axios-cookiejar": "0.0.3",
+    "node-fetch": "^1.7.3",
+    "node-hot-require": "^1.0.6",
+    "nodemailer": "^4.1.1",
+    "redis": "^2.8.0",
+    "sharp": "^0.21.0",
+    "socket.io": "^2.1.0",
+    "tough-cookie": "^2.4.3",
+    "tough-cookie-filestore": "0.0.1",
+    "yargs": "^12.0.1"
+  },
+  "devDependencies": {}
+}

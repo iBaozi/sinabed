@@ -67,7 +67,7 @@ exports.image = async function(req, res) {
         name = body.f.name;
     }
     let row = {
-        ip: req.ip,
+        ip: req.realip,
         ua: req.ua,
         uri: md5,
         name,
@@ -132,5 +132,5 @@ exports.ip = async function(req, res) {
     /** @type {ip_body} */
     let body = req.body;
     let user = req.session.user;
-    return { ip: req.ip, ua: req.ua };
+    return { ip: req.realip, ua: req.ua };
 };

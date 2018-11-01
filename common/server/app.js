@@ -43,7 +43,7 @@ app.use("/api", function(req, res, next) {
     if (ip.substr(0, 7) == "::ffff:") {
         ip = ip.substr(7);
     }
-    req.ip = ip;
+    req.realip = ip;
     req.ua = req.headers['user-agent'] || '';
     if (req.ua.length > 256) req.ua = req.ua.slice(0, 256);
     next();

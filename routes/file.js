@@ -50,14 +50,14 @@ exports.image = async function(req, res) {
     let sina = new SinaBed(body.username || config.sina.username, body.passwd || config.sina.password);
     buffer = buffer || await cofs.readFile(body.f.path);
     cofs.rm(body.f.path);
-    let md5 = 'bfdf4e9fgy1fwt3hg92ypj20pu0f30t7';
-    // try {
-    //     md5 = await sina.upload(buffer.toString('base64'));
-    // } catch (err) {
-    //     if (err == "pincode") return 407;
-    //     console.error(err);
-    //     throw err;
-    // }
+    let md5 = '';
+    try {
+        md5 = await sina.upload(buffer.toString('base64'));
+    } catch (err) {
+        if (err == "pincode") return 407;
+        console.error(err);
+        throw err;
+    }
     let url = `https://ws1.sinaimg.cn/mw690/${md5}`;
     let name;
     if (body.f.name.length > 64) {
@@ -75,7 +75,7 @@ exports.image = async function(req, res) {
     };
     if (data) row.data = data;
     if (body.token) row.token = body.token;
-    // await db.insert('photo', row);
+    await db.insert('photo', row);
     return { url, rect, data };
 };
 

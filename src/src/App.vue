@@ -28,7 +28,7 @@ import { State, Action } from "vuex-class";
 @Component()
 export default class App extends Vue {
 	donate() {
-		window.open('http://perpay.inu1255.cn/donate/1?page=1&n=1')
+		window.open('http://perpay.inu1255.cn/donate/1?page=2&n=1')
 	}
 }
 </script>

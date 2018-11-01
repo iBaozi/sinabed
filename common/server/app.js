@@ -35,9 +35,7 @@ app.use("/api", lib.expressSessionUpdate);
 // 		next();
 //     });
 // }
-if (config.dev) {
-    app.use("/api", utils.cross);
-}
+app.use("/api", utils.cross);
 app.use("/api", function(req, res, next) {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     if (ip.substr(0, 7) == "::ffff:") {

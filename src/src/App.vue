@@ -7,7 +7,7 @@
 			<mu-button to="setting" flat slot="right">设置</mu-button>
 			<mu-button to="api" flat slot="right">接口</mu-button>
 			<mu-button @click="go('http://perpay.inu1255.cn/donate/2?page=1')" flat slot="right">捐赠</mu-button>
-			<mu-button @click="go('https://gitee.com/inu1255/sinabed/issues')">反馈</mu-button>
+			<mu-button @click="go('https://gitee.com/inu1255/sinabed/issues')" flat slot="right">反馈</mu-button>
 		</mu-appbar>
 		<div class="main">
 			<keep-alive>

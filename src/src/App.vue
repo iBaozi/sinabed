@@ -9,11 +9,9 @@
 			<mu-button @click="donate" flat slot="right">捐赠</mu-button>
 		</mu-appbar>
 		<div class="main">
-			<mu-scale-transition>
-				<keep-alive>
-					<router-view />
-				</keep-alive>
-			</mu-scale-transition>
+			<keep-alive>
+				<router-view />
+			</keep-alive>
 		</div>
 		<footer class="tac">
 			Copyright Ⓒ 2018 inu1255. All rights reserved. 请勿上传违反中国大陆和香港法律的图片，违者后果自负。
@@ -34,25 +32,7 @@ export default class App extends Vue {
 </script>
 <style lang="less">
 @import "~@/styles/methods.less";
-
-.app-title {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 101;
-  overflow: hidden;
-  ~ .container {
-    margin-top: 65px;
-  }
-}
 .main {
-  > * {
-    transition: all 0.35s;
-  }
-  > .mu-scale-transition-leave-active.mu-scale-transition-leave-to {
-    position: absolute;
-  }
   padding-bottom: 65px;
 }
 footer {

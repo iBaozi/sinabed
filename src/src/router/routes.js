@@ -1,6 +1,7 @@
 const Home = function() { return import('../pages/Home'); };
 const Setting = function() { return import('../pages/Setting'); };
 const History = function() { return import('../pages/History'); };
+const Api = function() { return import('../pages/Api'); };
 let routes = [];
 
 routes.push({
@@ -18,6 +19,11 @@ routes.push({
     name: '历史',
     icon: "history",
     component: History
+}, {
+    path: '/api',
+    name: '接口',
+    icon: "api",
+    component: Api
 }, );
 
 export default routes;

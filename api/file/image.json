@@ -8,20 +8,23 @@
             "need": true
         },
         "qr": {
-            "lbl": "是否二维码",
+            "lbl": "识别二维码",
             "type": "int",
             "opts": [
-                "不解析",
-                "解析",
-                "解析并必须"
+                "不识别",
+                "识别",
+				"识别并必须",
+				"识别并裁剪"
             ]
         },
         "token": {
 			"lbl": "身份信息",
+			"rem": "与上传的图片绑定,之后可以通过token查询上传的图片,不传则不绑定",
 			"len": [0, 37]
         },
         "username": {
-            "lbl": "新浪账号"
+			"lbl": "新浪账号",
+			"rem": "不传则使用系统账号,用于登录新浪图床"
         },
         "passwd": {
             "lbl": "新浪密码"
@@ -33,8 +36,11 @@
         "407": "需要输入验证码"
     },
     "ret": {
-        "no": 200,
-        "msg": "",
-        "data": []
-    }
+		"no":200,
+		"data":{
+			"url":"https://ws1.sinaimg.cn/mw690/bfdf4e9fgy1fwtix4arf4j20u019idig",
+			"rect":{"left":212,"top":559,"width":652,"height":648},
+			"data":"HTTPS://QR.ALIPAY.COM/FKX01934Z8IBCXZIUFLPB9"
+		}
+	}
 }

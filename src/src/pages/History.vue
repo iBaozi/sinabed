@@ -12,7 +12,9 @@
 							<div class="mu-grid-tile-titlebar">
 								<div class="mu-grid-tile-title-container">
 									<div class="mu-grid-tile-title"><span>{{item.name}}</span></div>
-									<div class="mu-grid-tile-subtitle"><span><i-date :value="item.create_at"></i-date>上传</span></div>
+									<div class="mu-grid-tile-subtitle"><span>
+											<i-date :value="item.create_at"></i-date>上传
+										</span></div>
 								</div>
 								<div class="mu-grid-tile-action">
 									<mu-button @click="copy(item.url)" slot="action" icon>
@@ -72,11 +74,10 @@ export default class History extends Vue {
 		else this.$toast.error('复制失败')
 	}
 	mounted() {
-		if (this.history.length) {
-			this.list = this.history
-			if (this.history.length < 15) this.loadmore()
-		} else {
+		if (this.user.token) {
 			this.refresh()
+		} else {
+			this.list = this.history
 		}
 	}
 }

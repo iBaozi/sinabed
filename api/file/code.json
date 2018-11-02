@@ -1,13 +1,13 @@
 {
-    "name": "输入验证码",
+    "name": "获取/输入验证码",
+    "rem": "不传code参数代表获取验证码,传了code参数代表输入验证码",
     "method": "get",
     "params": {
         "username": {
             "lbl": "用户名"
         },
         "code": {
-            "lbl": "验证码",
-            "need": true
+            "lbl": "验证码"
         }
     },
     "ret": {

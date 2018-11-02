@@ -22,6 +22,12 @@
 		<div class="tar">
 			<mu-button @click="onPick" color="grey900">选择图片</mu-button>
 		</div>
+		<mu-dialog title="验证码" :open.sync="pincode.open" :overlay-close="false">
+			<mu-text-field label="验证码" v-model="pincode.value" v-focus>
+				<img slot="append" :src="pin_url" alt="">
+			</mu-text-field>
+			<mu-button slot="actions" @click="onCode" color="primary">确定</mu-button>
+		</mu-dialog>
 	</mu-container>
 </template>
 <script>
@@ -29,6 +35,7 @@ import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator';
 import { State, Action } from "vuex-class";
 import utils from '../common/utils';
+import config from '../common/config';
 
 @Component({ components: {} })
 export default class Home extends Vue {
@@ -38,6 +45,15 @@ export default class Home extends Vue {
 	dragover = 0
 	list = []
 	visibility = false
+	pincode = {
+		open: false,
+		value: '',
+		pin_at: 0,
+	}
+
+	get pin_url() {
+		return config.api + `/api/file/code?username=${this.user.username || ''}&t=${this.pincode.pin_at}`
+	}
 
 	onDragOver(e, flag) {
 		this.dragover = flag
@@ -96,6 +112,10 @@ export default class Home extends Vue {
 			item.err = 0
 			this.addPhoto(item)
 		} catch (err) {
+			if ('需要输入验证码' == err) {
+				this.pincode.open = true
+				this.pincode.pin_at = +new Date()
+			}
 			item.err = err
 		}
 	}
@@ -103,6 +123,13 @@ export default class Home extends Vue {
 		let ok = utils.copy(str)
 		if (ok) this.$toast.success('复制成功')
 		else this.$toast.error('复制失败')
+	}
+	async onCode() {
+		if (this.pincode.value) {
+			await this.$get('file/code', { username: this.user.username, code: this.pincode.value }, { loading: true })
+			this.pincode.value = ''
+			this.pincode.open = false
+		}
 	}
 }
 </script>

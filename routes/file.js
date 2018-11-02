@@ -21,6 +21,7 @@ exports.image = async function(req, res) {
     /** @type {image_body} */
     let body = req.body;
     if (!body.f.type.startsWith('image/')) return 405;
+    if (SinaBed[body.username || config.sina.username]) return 407;
     let rect, data, buffer;
     if (body.qr) {
         let img = {};
@@ -117,8 +118,19 @@ exports.code = async function(req, res) {
     let body = req.body;
     let user = req.session.user;
     let name = body.username || config.sina.username;
-    await SinaBed[name](body.code);
-    SinaBed[name] = null;
+    if (body.code) {
+        if (SinaBed[name]) {
+            await SinaBed[name](body.code);
+            SinaBed[name] = null;
+        }
+    } else {
+        let filename = `public/${name}.png`;
+        let stat = await cofs.stat(filename);
+        utils.send304(req, res, stat.mtime.getTime(), function() {
+            res._end = true;
+            cofs.createReadStream(filename).pipe(res);
+        });
+    }
 };
 
 /**

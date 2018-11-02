@@ -6,4 +6,5 @@ package-lock.json
 upload/
 common/sina/*.json
 public/dist/
+public/*.png
 .config.json
